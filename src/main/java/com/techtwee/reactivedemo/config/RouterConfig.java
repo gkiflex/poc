@@ -15,7 +15,9 @@ public class RouterConfig {
     @Bean
     public RouterFunction<ServerResponse> route(){
         return RouterFunctions.route()
-                .GET("/router/customers/stream", customerHandler::getCustomerStream)
+                .GET("/router/customers/stream", customerHandler::getAllCustomerStream)
+                .GET("/router/customers/stream/{custId}", customerHandler::getCustomerStream)
+                .POST("/router/customers/save", customerHandler::saveCustomer)
                 .build();
     }
 }
